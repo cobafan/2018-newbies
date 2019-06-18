@@ -48,7 +48,7 @@ class Api::RemitRequestsController < Api::ApplicationController
   end
 
   def correct_user
-    render json: {}, status: :forbidden unless remit_request.user == current_user
+    render json: {}, status: :forbidden unless remit_request.requested_user == current_user
   end
 
   def remit_request
