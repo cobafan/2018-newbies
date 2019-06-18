@@ -307,12 +307,6 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       updateUser: function(event) {
         if(event) { event.preventDefault(); }
-
-      //  var self = this;
-      //  api.put('/users', { user: this.user }).//次root_pathにリダイレクトしてもいいんじゃないか
-      //    then(function(json) {
-      //      self.user = json;
-      //    });
       },
     }
   });
