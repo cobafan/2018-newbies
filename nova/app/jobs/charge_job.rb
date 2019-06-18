@@ -18,7 +18,6 @@ class ChargeJob < ApplicationJob
     execute!(charge, 'invalid request')
 
   rescue => e
-    # automatical retry for sidekiq
    puts "-----"
    puts "Retry Job"
    throw e
