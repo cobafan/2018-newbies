@@ -3,7 +3,10 @@
 class Api::ApplicationController < ActionController::API
   ENDPOINT_SCHEME = 'http' # TODO: 設定値にする
 
+  include Loginable
   include AbstractController::Translation
+  include ActionController::Cookies
+
 
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
@@ -15,7 +18,7 @@ class Api::ApplicationController < ActionController::API
   protected
 
   def required_login!
-    render(json: { errors: [t('api.application.errors.unauthorized')] }, status: :unauthorized) unless user_signed_in?
+    render(json: { errors: [t('api.application.errors.unauthorized')] }, status: :unauthorized) unless cookies[:_nova_session]
   end
 
   # `/api` に対するCSRFを防ぐために、リクエスト先のHostとOriginが一致するかをチェックする

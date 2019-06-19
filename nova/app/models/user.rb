@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_one :charge, dependent: :destroy
 
   validates :nickname, presence: true, length: { maximum: 32 }
-  validates :email, presence: true, uniqueness: true, length: { maximum: 254 }
+  validates :email
 
   after_create :create_stripe_customer
   after_create :create_balance

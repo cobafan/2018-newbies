@@ -32,5 +32,7 @@ module Nova
 
     config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :utc
+
+    config.middleware.use ActionDispatch::Cookies
   end
 end

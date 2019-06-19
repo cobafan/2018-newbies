@@ -2,6 +2,6 @@
 
 class DashboardController < ApplicationController
   def show
-    redirect_to(new_user_session_url) unless user_signed_in?
+    redirect_to(login_path) unless logged_in?
   end
 end
